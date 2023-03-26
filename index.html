@@ -147,6 +147,70 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.openrwx.com/2023/03/26/Nginx%E7%9A%84proxy-pass%E7%9A%84%E4%BD%9C%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qwert">
+      <meta itemprop="description" content="笔记侠">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qwert的个人笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/26/Nginx%E7%9A%84proxy-pass%E7%9A%84%E4%BD%9C%E7%94%A8/" class="post-title-link" itemprop="url">Nginx的proxy_pass作用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-26 18:05:34 / 修改时间：18:49:01" itemprop="dateCreated datePublished" datetime="2023-03-26T18:05:34+08:00">2023-03-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当匹配到对应的location，则会根据匹配规则进行特定路由</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">	proxy_pass http://localtion:8080;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>location使用了 &#x2F; 作为匹配规则，当访问 <a target="_blank" rel="noopener" href="http://www.abc.com/a/b.html">http://www.abc.com/a/b.html</a> 时，会代理到 <a target="_blank" rel="noopener" href="http://location:8080/a/b.html%E3%80%82">http://location:8080/a/b.html。</a><br>在使用 &#x2F; 作为匹配规则的情况下，proxy_pass 地址（ip+端口）后面是否使用 &#x2F;<br>效果都是一样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">	#没加 /</span><br><span class="line">    proxy_pass http://localhost:8080;</span><br><span class="line">    #加了 /</span><br><span class="line">    proxy_pass http://localhost:8080/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当访问 <a target="_blank" rel="noopener" href="http://www.abc.com/a/b.html">http://www.abc.com/a/b.html</a> 时，都会代理到 <a target="_blank" rel="noopener" href="http://location:8080/a/b.html%E3%80%82">http://location:8080/a/b.html。</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.openrwx.com/2023/03/21/%E4%BB%8A%E5%A4%A9%EF%BC%8C%E5%8F%88%E6%98%AF%E6%91%B8%E9%B1%BC%E7%9A%84%E4%B8%80%E5%A4%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -273,7 +337,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
